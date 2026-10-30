@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import {
   GraduationCap,
   Bell,
@@ -14,11 +15,14 @@ import {
   UserPlus,
   Edit3,
   LogOut,
-  User
+  User,
+  Sun,
+  Moon
 } from "lucide-react";
 import { api } from "../services/api";
 
 export function Navbar({ onResetData, onSearch }) {
+  const { theme, toggleTheme, isDark } = useTheme();
   const {
     currentPersona,
     currentUser,
@@ -128,6 +132,20 @@ export function Navbar({ onResetData, onSearch }) {
           >
             <RotateCcw className={`w-3.5 h-3.5 ${isResetting ? "animate-spin text-indigo-400" : ""}`} />
             <span>Reset</span>
+          </button>
+
+          {/* Dark / Light Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            aria-label="Toggle dark/light theme"
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition-colors cursor-pointer group"
+          >
+            {isDark ? (
+              <Sun className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform" />
+            ) : (
+              <Moon className="w-4 h-4 text-indigo-500 group-hover:-rotate-12 transition-transform" />
+            )}
           </button>
 
           {/* Notifications */}

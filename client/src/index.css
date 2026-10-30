@@ -1,8 +1,19 @@
 @import "tailwindcss";
 
+:root {
+  color-scheme: light dark;
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+}
+
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white min-h-screen;
+    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white min-h-screen transition-colors duration-200;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -34,4 +45,132 @@
   background: rgba(30, 41, 59, 0.5);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* =================================================== */
+/* ☀️ LIGHT MODE CLASSIC & PREMIUM OVERRIDES           */
+/* =================================================== */
+html.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Base surface containers */
+html.light .bg-slate-950,
+html.light .bg-slate-950\/90,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/70,
+html.light .bg-slate-950\/60,
+html.light .bg-slate-950\/40 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-slate-900,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/70,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/40 {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+html.light .bg-slate-850,
+html.light .bg-slate-800,
+html.light .bg-slate-800\/80,
+html.light .bg-slate-800\/70,
+html.light .bg-slate-800\/60 {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .hover\:bg-slate-800:hover,
+html.light .hover\:bg-slate-850:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* Borders */
+html.light .border-slate-800,
+html.light .border-slate-800\/90,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/60,
+html.light .border-slate-700,
+html.light .border-slate-700\/80,
+html.light .border-slate-700\/60 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Text colors */
+html.light h1:not([class*="bg-clip-text"]),
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5 {
+  color: #0f172a !important;
+}
+
+html.light .text-white:not(
+  button.bg-indigo-600 *,
+  button.bg-indigo-600,
+  button.bg-emerald-600 *,
+  button.bg-emerald-600,
+  button.bg-amber-600 *,
+  button.bg-amber-600,
+  button[class*="from-indigo-600"] *,
+  button[class*="from-indigo-600"],
+  span.bg-indigo-600,
+  span.bg-indigo-600 *
+) {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.light .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Inputs, textareas, selects */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Glass panels in light mode */
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+html.light .glass-card {
+  background: rgba(248, 250, 252, 0.8) !important;
+  border-color: rgba(226, 232, 240, 0.8) !important;
 }

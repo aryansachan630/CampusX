@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import { Navbar } from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
 import { Dashboard } from "./pages/Dashboard";
@@ -274,8 +275,10 @@ function MainApp() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <MainApp />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <MainApp />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
