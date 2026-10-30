@@ -219,7 +219,7 @@ export function FeePayments({ feesData, onUpdateFees }) {
           <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
             <div className="flex items-center justify-between text-xs">
               <span className="text-slate-400">Student Roll No:</span>
-              <span className="font-mono text-white font-semibold">{currentPersona?.rollNo || "22CSE042"}</span>
+              <span className="font-mono text-white font-semibold">{currentPersona?.rollNo || "2304920100148"}</span>
             </div>
             <div className="flex items-center justify-between text-xs">
               <span className="text-slate-400">Total Due Amount:</span>
@@ -283,14 +283,14 @@ export function FeePayments({ feesData, onUpdateFees }) {
           isOpen={!!selectedReceipt}
           onClose={() => setSelectedReceipt(null)}
           title="Official Fee Payment Receipt"
-          subtitle="CampusX Institute of Technology • Accounts Directorate"
+          subtitle="KCC Institute of Technology and Management • Accounts Directorate"
         >
           <div className="space-y-5 p-2 bg-slate-950/90 rounded-2xl border border-slate-800 text-xs">
             {/* College header */}
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div>
-                <h4 className="text-sm font-extrabold text-white">CampusX Institute of Technology</h4>
-                <p className="text-[11px] text-slate-400">Affiliated to University Grants Commission (UGC)</p>
+                <h4 className="text-sm font-extrabold text-white">KCC Institute of Technology and Management</h4>
+                <p className="text-[11px] text-slate-400">Affiliated to Dr. A.P.J. Abdul Kalam Technical University (AKTU)</p>
                 <p className="text-[10px] text-slate-500 font-mono mt-0.5">Receipt: {selectedReceipt.receiptNo}</p>
               </div>
               <div className="p-2 rounded-lg bg-slate-900 border border-slate-800">
@@ -302,11 +302,11 @@ export function FeePayments({ feesData, onUpdateFees }) {
             <div className="grid grid-cols-2 gap-2 text-[11px]">
               <div>
                 <span className="text-slate-500">Student Name:</span>
-                <p className="font-semibold text-white">{currentPersona?.name || "Aarav Sharma"}</p>
+                <p className="font-semibold text-white">{currentPersona?.name || "Aryan Sachan"}</p>
               </div>
               <div>
                 <span className="text-slate-500">Roll Number:</span>
-                <p className="font-mono font-semibold text-white">{currentPersona?.rollNo || "22CSE042"}</p>
+                <p className="font-mono font-semibold text-white">{currentPersona?.rollNo || "2304920100148"}</p>
               </div>
               <div>
                 <span className="text-slate-500">Department & Sem:</span>

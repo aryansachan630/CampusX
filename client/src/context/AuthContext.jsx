@@ -23,12 +23,13 @@ export function AuthProvider({ children }) {
         const fallback = [
           {
             id: "student-1",
-            name: "Aarav Sharma",
+            name: "Aryan Sachan",
             role: "student",
             title: "B.Tech CSE (3rd Year)",
-            rollNo: "22CSE042",
+            rollNo: "2304920100148",
             avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150",
-            department: "Computer Science & Engineering"
+            department: "Computer Science & Engineering",
+            collegeName: "KCC Institute of Technology and Management"
           },
           {
             id: "faculty-1",

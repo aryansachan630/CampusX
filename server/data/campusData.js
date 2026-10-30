@@ -4,11 +4,11 @@ export const initialData = {
   personas: [
     {
       id: "student-1",
-      name: "Aarav Sharma",
+      name: "Aryan Sachan",
       role: "student",
-      title: "B.Tech Computer Science & Engineering (3rd Year)",
-      rollNo: "22CSE042",
-      email: "aarav.sharma@campusx.edu",
+      title: "B.Tech Computer Science & Engineering (CSE)",
+      rollNo: "2304920100148",
+      email: "aryansachan630@gmail.com",
       avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150",
       semester: "6th Semester",
       section: "Section A",
@@ -16,7 +16,7 @@ export const initialData = {
       attendancePercentage: 84.5,
       pendingFees: 30000,
       department: "Computer Science & Engineering",
-      collegeName: "CampusX Institute of Technology"
+      collegeName: "KCC Institute of Technology and Management"
     },
     {
       id: "faculty-1",
@@ -24,10 +24,10 @@ export const initialData = {
       role: "faculty",
       title: "Professor & Head of Department (CSE)",
       facultyId: "FAC-CSE-102",
-      email: "r.gupta@campusx.edu",
+      email: "r.gupta@kccitm.edu.in",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150",
       department: "Computer Science & Engineering",
-      collegeName: "CampusX Institute of Technology",
+      collegeName: "KCC Institute of Technology and Management",
       subjectsTaught: ["Data Structures & Algorithms", "Advanced Algorithms", "Research Methodology"]
     },
     {
@@ -36,13 +36,13 @@ export const initialData = {
       role: "mentor",
       title: "Final Year CSE | SDE Intern @ Google",
       rollNo: "21CSE015",
-      email: "priya.nair@campusx.edu",
+      email: "priya.nair@kccitm.edu.in",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150",
       skills: ["Data Structures & Algorithms", "System Design", "React", "Tech Interviews"],
       rating: 4.9,
       sessionsCompleted: 42,
       department: "Computer Science & Engineering",
-      collegeName: "CampusX Institute of Technology"
+      collegeName: "KCC Institute of Technology and Management"
     }
   ],
 
@@ -50,7 +50,7 @@ export const initialData = {
     {
       id: "post-1",
       authorId: "student-1",
-      authorName: "Aarav Sharma",
+      authorName: "Aryan Sachan",
       authorRole: "3rd Year CSE",
       authorAvatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150",
       title: "🚀 Team formation for Smart India Hackathon 2026!",
@@ -64,7 +64,7 @@ export const initialData = {
           id: "c-1",
           authorName: "Sneha Roy",
           authorRole: "2nd Year IT",
-          text: "Hey Aarav! I have built 3 React apps and know Figma well. Would love to join!",
+          text: "Hey Aryan! I have built 3 React apps and know Figma well. Would love to join!",
           time: "1 hour ago"
         },
         {
@@ -113,7 +113,7 @@ export const initialData = {
       comments: [
         {
           id: "c-4",
-          authorName: "Aarav Sharma",
+          authorName: "Aryan Sachan",
           authorRole: "3rd Year CSE",
           text: "Already booked a session on the Mentorship hub! Thanks Priya di!",
           time: "Yesterday"
@@ -137,7 +137,7 @@ export const initialData = {
     {
       id: "post-5",
       authorId: "student-1",
-      authorName: "Aarav Sharma",
+      authorName: "Aryan Sachan",
       authorRole: "3rd Year CSE",
       authorAvatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150",
       title: "📊 Campus Poll: 24x7 Central Library access during Mid-Terms?",
@@ -326,7 +326,7 @@ export const initialData = {
       mentorId: "m-1",
       mentorName: "Priya Nair",
       studentId: "student-1",
-      studentName: "Aarav Sharma",
+      studentName: "Aryan Sachan",
       topic: "Resume & Portfolio Review for Product Companies",
       slot: "Tomorrow 06:00 PM",
       status: "Confirmed",

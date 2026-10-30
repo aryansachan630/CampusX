@@ -63,7 +63,7 @@ export function Navbar({ onResetData, onSearch }) {
                 OS & Hub
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 hidden sm:block">CampusX Institute of Technology</p>
+            <p className="text-[11px] text-slate-400 hidden sm:block">KCC Institute of Technology and Management</p>
           </div>
         </div>
 

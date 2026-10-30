@@ -232,7 +232,7 @@ app.post("/api/mentorship/book", (req, res) => {
     mentorId: mentor.id,
     mentorName: mentor.name,
     studentId: studentId || "student-1",
-    studentName: "Aarav Sharma",
+    studentName: "Aryan Sachan",
     topic: topic || "Career and Code Guidance",
     slot: slot || mentor.availableSlots[0],
     status: "Confirmed",
@@ -374,8 +374,10 @@ app.post("/api/ai/chat", async (req, res) => {
     const aiResult = await generateCampusAIResponse({
       prompt: message,
       context: context || {
-        studentName: "Aarav Sharma",
-        rollNo: "22CSE042",
+        studentName: "Aryan Sachan",
+        rollNo: "2304920100148",
+        collegeName: "KCC Institute of Technology and Management",
+        department: "Computer Science & Engineering",
         attendance: db.attendance,
         grades: db.grades
       },

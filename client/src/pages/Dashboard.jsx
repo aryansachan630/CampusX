@@ -34,7 +34,7 @@ export function Dashboard({ onTabChange, attendanceData, timetableData, postsDat
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium">
               <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-              <span>CampusX Portal • Semester 6 Academic Session</span>
+              <span>KCC Institute Portal • CSE 6th Semester</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Welcome back, {currentPersona?.name}! 👋

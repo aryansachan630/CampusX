@@ -14,12 +14,13 @@ export async function generateCampusAIResponse({ prompt, context = {}, apiKey = 
     try {
       const ai = new GoogleGenAI({ apiKey: effectiveApiKey });
       const systemInstruction = `
-You are CampusGenie, the official AI Academic Copilot & Student Mentor for "CampusX Institute of Technology".
+You are CampusGenie, the official AI Academic Copilot & Student Mentor for "KCC Institute of Technology and Management".
 You have full access to campus data, ERP records, university attendance rules, exam timetables, and career guidance.
 Current Student Context:
-- Student Name: ${context.studentName || "Aarav Sharma"}
-- Roll Number: ${context.rollNo || "22CSE042"}
-- Branch: 3rd Year B.Tech Computer Science & Engineering (Semester 6)
+- Student Name: ${context.studentName || "Aryan Sachan"}
+- Roll Number: ${context.rollNo || "2304920100148"}
+- College: KCC Institute of Technology and Management
+- Branch: 3rd Year B.Tech Computer Science & Engineering (CSE)
 - Current CGPA: 8.84 / 10
 - Overall Attendance: 84.5% (Safe)
 - Critical Attendance Alert: CSE304 Computer Networks (74.3% - below 75% cutoff threshold! Needs 2 classes to be safe).
@@ -154,9 +155,10 @@ I have proactively reviewed the lecture notes and practical lab assignments from
 Thank you very much for your kind understanding and support.
 
 Yours sincerely,  
-**Aarav Sharma**  
+**Aryan Sachan**  
 B.Tech CSE (3rd Year, Section A)  
-Roll No: **22CSE042**  
+Roll No: **2304920100148**  
+KCC Institute of Technology and Management  
 Contact: +91 98765 43210`;
   }
 
