@@ -208,7 +208,12 @@ function MainApp() {
           )}
 
           {currentTab === "timetable" && (
-            <TimetableView timetableData={timetable} />
+            <TimetableView
+              timetableData={timetable}
+              onUpdateTimetable={setTimetable}
+              attendanceData={attendance}
+              onOpenAI={handleOpenAI}
+            />
           )}
 
           {currentTab === "grades" && (
@@ -230,6 +235,8 @@ function MainApp() {
             <FacultyAdminPortal
               attendanceData={attendance}
               onUpdateAttendance={setAttendance}
+              timetableData={timetable}
+              onUpdateTimetable={setTimetable}
               onNoticeCreated={(newNotice) => setNotices((prev) => [newNotice, ...prev])}
             />
           )}

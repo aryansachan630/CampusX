@@ -430,6 +430,108 @@ app.get("/api/academic/timetable", (req, res) => {
   res.json(db.timetable);
 });
 
+// Update an existing timetable slot
+app.put("/api/academic/timetable/slot", (req, res) => {
+  try {
+    const { day, slotIndex, time, subject, code, room, faculty, type } = req.body;
+    const db = getDb();
+    const dayObj = db.timetable.find((d) => d.day.toLowerCase() === (day || "").toLowerCase());
+
+    if (!dayObj) {
+      return res.status(404).json({ error: `Day '${day}' not found in timetable` });
+    }
+
+    if (slotIndex === undefined || slotIndex < 0 || slotIndex >= dayObj.slots.length) {
+      return res.status(400).json({ error: "Invalid slotIndex" });
+    }
+
+    dayObj.slots[slotIndex] = {
+      ...dayObj.slots[slotIndex],
+      ...(time ? { time } : {}),
+      ...(subject ? { subject } : {}),
+      ...(code ? { code } : {}),
+      ...(room ? { room } : {}),
+      ...(faculty ? { faculty } : {}),
+      ...(type ? { type } : {})
+    };
+
+    saveDb();
+    res.json({
+      message: `Timetable slot for ${day} updated successfully!`,
+      timetable: db.timetable,
+      updatedSlot: dayObj.slots[slotIndex]
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update timetable slot" });
+  }
+});
+
+// Add a new slot to a day's schedule
+app.post("/api/academic/timetable/slot", (req, res) => {
+  try {
+    const { day, time, subject, code, room, faculty, type } = req.body;
+    if (!day || !subject || !time) {
+      return res.status(400).json({ error: "Day, subject, and time are required" });
+    }
+
+    const db = getDb();
+    let dayObj = db.timetable.find((d) => d.day.toLowerCase() === day.toLowerCase());
+
+    if (!dayObj) {
+      dayObj = { day, slots: [] };
+      db.timetable.push(dayObj);
+    }
+
+    const newSlot = {
+      time,
+      subject,
+      code: code || "CSE300",
+      room: room || "LT-102",
+      faculty: faculty || "Faculty Member",
+      type: type || "Lecture"
+    };
+
+    dayObj.slots.push(newSlot);
+    saveDb();
+
+    res.status(201).json({
+      message: `New class '${subject}' added to ${day}'s timetable!`,
+      timetable: db.timetable,
+      newSlot
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to add timetable slot" });
+  }
+});
+
+// Delete a slot from a day's schedule
+app.delete("/api/academic/timetable/slot", (req, res) => {
+  try {
+    const { day, slotIndex } = req.body;
+    const db = getDb();
+    const dayObj = db.timetable.find((d) => d.day.toLowerCase() === (day || "").toLowerCase());
+
+    if (!dayObj) {
+      return res.status(404).json({ error: `Day '${day}' not found in timetable` });
+    }
+
+    if (slotIndex === undefined || slotIndex < 0 || slotIndex >= dayObj.slots.length) {
+      return res.status(400).json({ error: "Invalid slotIndex" });
+    }
+
+    const removed = dayObj.slots.splice(slotIndex, 1);
+    saveDb();
+
+    res.json({
+      message: `Slot removed from ${day}`,
+      timetable: db.timetable,
+      removedSlot: removed[0]
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete timetable slot" });
+  }
+});
+
 // ----------------------------------------------------
 // 7. ACADEMIC ERP - GRADES & TRANSCRIPT
 // ----------------------------------------------------
