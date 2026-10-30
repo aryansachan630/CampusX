@@ -1,0 +1,956 @@
+{
+  "personas": [
+    {
+      "id": "student-1",
+      "name": "Aryan Sachan",
+      "role": "student",
+      "title": "B.Tech Computer Science & Engineering (CSE)",
+      "rollNo": "2304920100148",
+      "email": "aryansachan630@gmail.com",
+      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150",
+      "semester": "6th Semester",
+      "section": "Section A",
+      "cgpa": 8.84,
+      "attendancePercentage": 84.5,
+      "pendingFees": 30000,
+      "department": "Computer Science & Engineering",
+      "collegeName": "KCC Institute of Technology and Management",
+      "passwordHash": "7ac0f76ed87c9878159aa1097707398e:4928bdcb1ab2a023d11558319dc51836c961355687c82c8de693c67268d859eec9698ba8149a8ebd7f0f7e4b1ca9db7625c1e254b55e44320ce8bb52433e3489",
+      "bio": "Student at KCC Institute of Technology and Management passionate about technology & problem solving.",
+      "skills": [
+        "C++",
+        "DSA",
+        "Web Development",
+        "Python"
+      ],
+      "github": "https://github.com/aryansachan630",
+      "linkedin": "https://linkedin.com/in/aryan-sachan"
+    },
+    {
+      "id": "faculty-1",
+      "name": "Dr. Ramesh Gupta",
+      "role": "faculty",
+      "title": "Professor & Head of Department (CSE)",
+      "facultyId": "FAC-CSE-102",
+      "email": "r.gupta@kccitm.edu.in",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150",
+      "department": "Computer Science & Engineering",
+      "collegeName": "KCC Institute of Technology and Management",
+      "subjectsTaught": [
+        "Data Structures & Algorithms",
+        "Advanced Algorithms",
+        "Research Methodology"
+      ],
+      "passwordHash": "7ac0f76ed87c9878159aa1097707398e:4928bdcb1ab2a023d11558319dc51836c961355687c82c8de693c67268d859eec9698ba8149a8ebd7f0f7e4b1ca9db7625c1e254b55e44320ce8bb52433e3489",
+      "bio": "Student at KCC Institute of Technology and Management passionate about technology & problem solving.",
+      "skills": [
+        "C++",
+        "DSA",
+        "Web Development",
+        "Python"
+      ],
+      "github": "https://github.com/aryansachan630",
+      "linkedin": "https://linkedin.com/in/aryan-sachan"
+    },
+    {
+      "id": "mentor-1",
+      "name": "Priya Nair",
+      "role": "mentor",
+      "title": "Final Year CSE | SDE Intern @ Google",
+      "rollNo": "21CSE015",
+      "email": "priya.nair@kccitm.edu.in",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150",
+      "skills": [
+        "Data Structures & Algorithms",
+        "System Design",
+        "React",
+        "Tech Interviews"
+      ],
+      "rating": 4.9,
+      "sessionsCompleted": 42,
+      "department": "Computer Science & Engineering",
+      "collegeName": "KCC Institute of Technology and Management",
+      "passwordHash": "7ac0f76ed87c9878159aa1097707398e:4928bdcb1ab2a023d11558319dc51836c961355687c82c8de693c67268d859eec9698ba8149a8ebd7f0f7e4b1ca9db7625c1e254b55e44320ce8bb52433e3489",
+      "bio": "Student at KCC Institute of Technology and Management passionate about technology & problem solving.",
+      "github": "https://github.com/aryansachan630",
+      "linkedin": "https://linkedin.com/in/aryan-sachan"
+    }
+  ],
+  "communityPosts": [
+    {
+      "id": "post-1",
+      "authorId": "student-1",
+      "authorName": "Aryan Sachan",
+      "authorRole": "3rd Year CSE",
+      "authorAvatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150",
+      "title": "🚀 Team formation for Smart India Hackathon 2026!",
+      "content": "Hey folks! We are a team of 4 (2 Backend devs + 1 ML enthusiast) working on an AI-powered smart agriculture logistics problem statement. We are looking for 1 UI/UX Frontend designer (React/Tailwind) and 1 IoT hardware person. Drop a comment or DM if you want to collaborate!",
+      "tag": "Hackathons",
+      "timestamp": "2 hours ago",
+      "likesCount": 28,
+      "likedBy": [
+        "student-1"
+      ],
+      "comments": [
+        {
+          "id": "c-1",
+          "authorName": "Sneha Roy",
+          "authorRole": "2nd Year IT",
+          "text": "Hey Aryan! I have built 3 React apps and know Figma well. Would love to join!",
+          "time": "1 hour ago"
+        },
+        {
+          "id": "c-2",
+          "authorName": "Vikram Malhotra",
+          "authorRole": "Alumni / Mentor",
+          "text": "Great initiative. Make sure your problem statement has a strong offline-first architecture for rural areas. Best of luck!",
+          "time": "45 mins ago"
+        }
+      ]
+    },
+    {
+      "id": "post-2",
+      "authorId": "faculty-1",
+      "authorName": "Dr. Ramesh Gupta",
+      "authorRole": "HOD CSE (Official)",
+      "authorAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150",
+      "title": "📢 Call for Research Submissions - Annual Tech Symposium 2026",
+      "content": "All pre-final and final year B.Tech students are invited to submit their research abstracts on Generative AI, Cloud Systems, and Cyber-Physical Security for our upcoming IEEE-affiliated student symposium. Selected papers receive 100% travel sponsorship.",
+      "tag": "Academics",
+      "timestamp": "5 hours ago",
+      "likesCount": 54,
+      "likedBy": [],
+      "comments": [
+        {
+          "id": "c-3",
+          "authorName": "Kunal Bansal",
+          "authorRole": "4th Year CSE",
+          "text": "Sir, what is the deadline for draft submissions?",
+          "time": "3 hours ago"
+        }
+      ]
+    },
+    {
+      "id": "post-3",
+      "authorId": "mentor-1",
+      "authorName": "Priya Nair",
+      "authorRole": "Final Year CSE | Google SDE Intern",
+      "authorAvatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150",
+      "title": "💡 Demystifying System Design & DSA for Campus Placements",
+      "content": "Many 2nd & 3rd year students reached out asking how to balance semester exams and coding practice. Here is my 3-step blueprint: \n1. Do 2 LeetCode Mediums daily (Arrays, Graphs, DP).\n2. Build 1 solid full-stack project with real auth and caching.\n3. Participate in weekly college mock interview circles. I am hosting a free 1-on-1 resume review this Friday at 6 PM on the Mentorship tab!",
+      "tag": "Placements",
+      "timestamp": "Yesterday",
+      "likesCount": 112,
+      "likedBy": [
+        "student-1"
+      ],
+      "comments": [
+        {
+          "id": "c-4",
+          "authorName": "Aryan Sachan",
+          "authorRole": "3rd Year CSE",
+          "text": "Already booked a session on the Mentorship hub! Thanks Priya di!",
+          "time": "Yesterday"
+        }
+      ]
+    },
+    {
+      "id": "post-4",
+      "authorId": "student-3",
+      "authorName": "Devansh Patel",
+      "authorRole": "1st Year ECE",
+      "authorAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
+      "title": "🔍 Lost: Black Dell Laptop Charger in Main Library 2nd Floor",
+      "content": "Forgot my 65W Dell Type-C laptop charger near the window desk on the 2nd floor library around 4 PM today. If found, please hand it to the circulation desk or message me here. Greatly appreciated!",
+      "tag": "Lost & Found",
+      "timestamp": "1 day ago",
+      "likesCount": 14,
+      "likedBy": [],
+      "comments": []
+    },
+    {
+      "id": "post-5",
+      "authorId": "student-1",
+      "authorName": "Aryan Sachan",
+      "authorRole": "3rd Year CSE",
+      "authorAvatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150",
+      "title": "📊 Campus Poll: 24x7 Central Library access during Mid-Terms?",
+      "content": "Should the student council formally request extending library reading room timings to 24x7 with overnight security during exam weeks?",
+      "tag": "Campus Life",
+      "timestamp": "2 days ago",
+      "likesCount": 89,
+      "likedBy": [
+        "student-1"
+      ],
+      "poll": {
+        "question": "Do you want 24x7 Library access during exams?",
+        "options": [
+          {
+            "id": "opt-1",
+            "text": "Yes, absolutely needed!",
+            "votes": 142
+          },
+          {
+            "id": "opt-2",
+            "text": "Till midnight is sufficient",
+            "votes": 34
+          },
+          {
+            "id": "opt-3",
+            "text": "Neutral / Prefer hostel study",
+            "votes": 11
+          }
+        ],
+        "userVoted": "opt-1"
+      },
+      "comments": []
+    }
+  ],
+  "clubs": [
+    {
+      "id": "club-1",
+      "name": "CodeX - Competitive & Dev Club",
+      "category": "Technical",
+      "lead": "Tanmay Bhatia",
+      "membersCount": 420,
+      "description": "Premier coding community fostering algorithmic problem-solving, open-source development, and hackathon culture.",
+      "banner": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600",
+      "tags": [
+        "Algorithms",
+        "Web Dev",
+        "Hackathons"
+      ]
+    },
+    {
+      "id": "club-2",
+      "name": "RobotiX & IoT Society",
+      "category": "Hardware & AI",
+      "lead": "Ananya Verma",
+      "membersCount": 280,
+      "description": "Dedicated to robotics competitions, autonomous drone prototyping, and embedded IoT systems.",
+      "banner": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600",
+      "tags": [
+        "Robotics",
+        "Arduino",
+        "ROS"
+      ]
+    },
+    {
+      "id": "club-3",
+      "name": "E-Cell (Entrepreneurship Hub)",
+      "category": "Business & Startups",
+      "lead": "Rahul Singhania",
+      "membersCount": 350,
+      "description": "Incubating student-led ventures, hosting angel investor pitch days, and masterclasses with startup founders.",
+      "banner": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=600",
+      "tags": [
+        "Startups",
+        "Venture Capital",
+        "Pitching"
+      ]
+    },
+    {
+      "id": "club-4",
+      "name": "Kalakriti Cultural Club",
+      "category": "Arts & Culture",
+      "lead": "Simran Kaur",
+      "membersCount": 310,
+      "description": "The creative pulse of CampusX orchestrating annual music fests, street plays, debates, and fine arts exhibitions.",
+      "banner": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=600",
+      "tags": [
+        "Music",
+        "Drama",
+        "Fest"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-1",
+      "title": "HackCampus 2026: National Hackathon",
+      "clubId": "club-1",
+      "clubName": "CodeX",
+      "date": "Nov 14 - 15, 2026",
+      "time": "09:00 AM - 09:00 PM (36 Hours)",
+      "venue": "Main Auditorium & Innovation Lab",
+      "category": "Technical",
+      "prizePool": "₹2,50,000",
+      "capacity": 300,
+      "rsvpsCount": 245,
+      "isUserRsvpd": true,
+      "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
+      "description": "CampusX's flagship 36-hour hackathon with tracks in Generative AI, Web3, FinTech, and Smart Cities. Mentorship from top tech companies."
+    },
+    {
+      "id": "evt-2",
+      "title": "Autonomous Drone Prototyping Workshop",
+      "clubId": "club-2",
+      "clubName": "RobotiX",
+      "date": "Nov 06, 2026",
+      "time": "02:00 PM - 05:00 PM",
+      "venue": "Mechanical Dept - Room 302",
+      "category": "Workshop",
+      "prizePool": "Hardware Kits",
+      "capacity": 60,
+      "rsvpsCount": 52,
+      "isUserRsvpd": false,
+      "image": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=600",
+      "description": "Learn PID controllers, brushless motors, and flight control firmware with hands-on drone flight testing on campus grounds."
+    },
+    {
+      "id": "evt-3",
+      "title": "E-Summit '26: Pitch Your Startup",
+      "clubId": "club-3",
+      "clubName": "E-Cell",
+      "date": "Nov 20, 2026",
+      "time": "10:00 AM - 04:00 PM",
+      "venue": "Seminar Hall 1",
+      "category": "Business",
+      "prizePool": "₹5,00,000 Seed Grants",
+      "capacity": 150,
+      "rsvpsCount": 118,
+      "isUserRsvpd": false,
+      "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=600",
+      "description": "Pitch directly to prominent angel investors and venture capitalists. Pitch slots limited to top 15 selected student startups."
+    },
+    {
+      "id": "evt-4",
+      "title": "Rhythm '26 - Annual Acoustic Unplugged Night",
+      "clubId": "club-4",
+      "clubName": "Kalakriti",
+      "date": "Nov 28, 2026",
+      "time": "06:30 PM - 10:00 PM",
+      "venue": "Open Air Amphitheatre",
+      "category": "Cultural",
+      "prizePool": "Trophies & Vouchers",
+      "capacity": 500,
+      "rsvpsCount": 420,
+      "isUserRsvpd": true,
+      "image": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&q=80&w=600",
+      "description": "Live band showdown, acoustic solo performances, and food trucks under the stars at the campus amphitheatre."
+    }
+  ],
+  "mentors": [
+    {
+      "id": "m-1",
+      "name": "Priya Nair",
+      "year": "4th Year CSE",
+      "role": "SDE Intern @ Google",
+      "skills": [
+        "Data Structures",
+        "System Design",
+        "Full Stack",
+        "Resume Review"
+      ],
+      "rating": 4.9,
+      "reviewsCount": 38,
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150",
+      "bio": "Cracked Google, Microsoft, and Uber campus placements. Passionate about helping juniors ace coding rounds and portfolio reviews.",
+      "availableSlots": [
+        "Tomorrow 06:00 PM",
+        "Saturday 11:00 AM",
+        "Sunday 04:00 PM"
+      ]
+    },
+    {
+      "id": "m-2",
+      "name": "Rohan Mehta",
+      "year": "4th Year CSE",
+      "role": "Research Scholar @ IISc Bangalore",
+      "skills": [
+        "Machine Learning",
+        "PyTorch",
+        "Research Papers",
+        "GATE Prep"
+      ],
+      "rating": 4.8,
+      "reviewsCount": 29,
+      "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150",
+      "bio": "Published in NeurIPS workshop. Can help you structure your B.Tech thesis, prepare for higher studies (MS/PhD), or crack GATE CSE.",
+      "availableSlots": [
+        "Friday 05:00 PM",
+        "Saturday 03:00 PM"
+      ]
+    },
+    {
+      "id": "m-3",
+      "name": "Sneha Reddy",
+      "year": "3rd Year IT",
+      "role": "GSoC '25 Contributor (Apache)",
+      "skills": [
+        "Open Source",
+        "Next.js",
+        "Docker",
+        "Git/GitHub"
+      ],
+      "rating": 4.9,
+      "reviewsCount": 32,
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150",
+      "bio": "Selected for Google Summer of Code twice. Helping juniors build real-world open source projects and stand out on GitHub.",
+      "availableSlots": [
+        "Thursday 07:00 PM",
+        "Sunday 10:00 AM"
+      ]
+    },
+    {
+      "id": "m-4",
+      "name": "Vikram Malhotra",
+      "year": "Alumni '25",
+      "role": "SDE @ Amazon AWS",
+      "skills": [
+        "Cloud Architecture",
+        "Distributed Systems",
+        "Java/Spring",
+        "Behavioral Rounds"
+      ],
+      "rating": 5,
+      "reviewsCount": 55,
+      "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150",
+      "bio": "Alumni mentor giving back to CampusX. Available on weekends for mock technical bar-raiser rounds and career advice.",
+      "availableSlots": [
+        "Saturday 07:00 PM",
+        "Sunday 02:00 PM"
+      ]
+    }
+  ],
+  "mentorBookings": [
+    {
+      "id": "mb-1",
+      "mentorId": "m-1",
+      "mentorName": "Priya Nair",
+      "studentId": "student-1",
+      "studentName": "Aryan Sachan",
+      "topic": "Resume & Portfolio Review for Product Companies",
+      "slot": "Tomorrow 06:00 PM",
+      "status": "Confirmed",
+      "meetLink": "https://meet.google.com/cpx-mock-rvw"
+    }
+  ],
+  "attendance": {
+    "studentId": "student-1",
+    "overallPercentage": 84.5,
+    "minimumRequired": 75,
+    "totalClassesConducted": 195,
+    "totalClassesAttended": 165,
+    "subjects": [
+      {
+        "code": "CSE301",
+        "name": "Data Structures & Algorithms",
+        "faculty": "Dr. Ramesh Gupta",
+        "attended": 38,
+        "total": 42,
+        "percentage": 90.5,
+        "status": "Safe",
+        "canBunk": 4,
+        "needToAttend": 0
+      },
+      {
+        "code": "CSE302",
+        "name": "Operating Systems & Kernel Architecture",
+        "faculty": "Prof. Sunita Rao",
+        "attended": 31,
+        "total": 40,
+        "percentage": 77.5,
+        "status": "Warning",
+        "canBunk": 1,
+        "needToAttend": 0
+      },
+      {
+        "code": "CSE303",
+        "name": "Database Management Systems",
+        "faculty": "Prof. Amit Verma",
+        "attended": 36,
+        "total": 40,
+        "percentage": 90,
+        "status": "Safe",
+        "canBunk": 4,
+        "needToAttend": 0
+      },
+      {
+        "code": "CSE304",
+        "name": "Computer Networks & Protocols",
+        "faculty": "Prof. Deepa Sen",
+        "attended": 26,
+        "total": 35,
+        "percentage": 74.3,
+        "status": "Critical",
+        "canBunk": 0,
+        "needToAttend": 2
+      },
+      {
+        "code": "CSE305",
+        "name": "Artificial Intelligence & ML",
+        "faculty": "Prof. Vikram Joshi",
+        "attended": 34,
+        "total": 38,
+        "percentage": 89.5,
+        "status": "Safe",
+        "canBunk": 3,
+        "needToAttend": 0
+      }
+    ],
+    "recentLogs": [
+      {
+        "date": "Oct 30, 2026",
+        "subject": "CSE301 - DSA",
+        "status": "Present",
+        "slot": "09:00 - 10:00"
+      },
+      {
+        "date": "Oct 30, 2026",
+        "subject": "CSE302 - OS",
+        "status": "Present",
+        "slot": "10:00 - 11:00"
+      },
+      {
+        "date": "Oct 29, 2026",
+        "subject": "CSE304 - Networks",
+        "status": "Absent",
+        "slot": "11:15 - 12:15"
+      },
+      {
+        "date": "Oct 29, 2026",
+        "subject": "CSE303 - DBMS",
+        "status": "Present",
+        "slot": "12:15 - 01:15"
+      },
+      {
+        "date": "Oct 28, 2026",
+        "subject": "CSE305 - AI/ML Lab",
+        "status": "Present",
+        "slot": "02:00 - 04:00"
+      }
+    ]
+  },
+  "timetable": [
+    {
+      "day": "Monday",
+      "slots": [
+        {
+          "time": "09:00 - 10:00",
+          "subject": "Data Structures & Algorithms",
+          "code": "CSE301",
+          "room": "LT-102",
+          "faculty": "Dr. Ramesh Gupta",
+          "type": "Lecture"
+        },
+        {
+          "time": "10:00 - 11:00",
+          "subject": "Operating Systems",
+          "code": "CSE302",
+          "room": "LT-102",
+          "faculty": "Prof. Sunita Rao",
+          "type": "Lecture"
+        },
+        {
+          "time": "11:15 - 12:15",
+          "subject": "Computer Networks",
+          "code": "CSE304",
+          "room": "LT-104",
+          "faculty": "Prof. Deepa Sen",
+          "type": "Lecture"
+        },
+        {
+          "time": "12:15 - 01:15",
+          "subject": "Database Management",
+          "code": "CSE303",
+          "room": "LT-102",
+          "faculty": "Prof. Amit Verma",
+          "type": "Lecture"
+        },
+        {
+          "time": "02:00 - 04:00",
+          "subject": "DSA Programming Lab",
+          "code": "CSE301L",
+          "room": "Software Lab 3",
+          "faculty": "Dr. Ramesh Gupta",
+          "type": "Practical"
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "slots": [
+        {
+          "time": "09:00 - 10:00",
+          "subject": "Artificial Intelligence",
+          "code": "CSE305",
+          "room": "LT-201",
+          "faculty": "Prof. Vikram Joshi",
+          "type": "Lecture"
+        },
+        {
+          "time": "10:00 - 11:00",
+          "subject": "Data Structures & Algorithms",
+          "code": "CSE301",
+          "room": "LT-102",
+          "faculty": "Dr. Ramesh Gupta",
+          "type": "Lecture"
+        },
+        {
+          "time": "11:15 - 12:15",
+          "subject": "Operating Systems",
+          "code": "CSE302",
+          "room": "LT-102",
+          "faculty": "Prof. Sunita Rao",
+          "type": "Lecture"
+        },
+        {
+          "time": "12:15 - 01:15",
+          "subject": "Elective: Cloud Computing",
+          "code": "CSE309",
+          "room": "LT-204",
+          "faculty": "Prof. N. Mehra",
+          "type": "Lecture"
+        },
+        {
+          "time": "02:00 - 04:00",
+          "subject": "OS Kernel Lab",
+          "code": "CSE302L",
+          "room": "Systems Lab 1",
+          "faculty": "Prof. Sunita Rao",
+          "type": "Practical"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "slots": [
+        {
+          "time": "09:00 - 10:00",
+          "subject": "Database Management",
+          "code": "CSE303",
+          "room": "LT-102",
+          "faculty": "Prof. Amit Verma",
+          "type": "Lecture"
+        },
+        {
+          "time": "10:00 - 11:00",
+          "subject": "Computer Networks",
+          "code": "CSE304",
+          "room": "LT-104",
+          "faculty": "Prof. Deepa Sen",
+          "type": "Lecture"
+        },
+        {
+          "time": "11:15 - 12:15",
+          "subject": "Artificial Intelligence",
+          "code": "CSE305",
+          "room": "LT-201",
+          "faculty": "Prof. Vikram Joshi",
+          "type": "Lecture"
+        },
+        {
+          "time": "12:15 - 01:15",
+          "subject": "Library & Self Study",
+          "code": "LIB01",
+          "room": "Central Library",
+          "faculty": "Staff",
+          "type": "Study"
+        },
+        {
+          "time": "02:00 - 04:00",
+          "subject": "DBMS & SQL Lab",
+          "code": "CSE303L",
+          "room": "Database Lab 2",
+          "faculty": "Prof. Amit Verma",
+          "type": "Practical"
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "slots": [
+        {
+          "time": "09:00 - 10:00",
+          "subject": "Operating Systems",
+          "code": "CSE302",
+          "room": "LT-102",
+          "faculty": "Prof. Sunita Rao",
+          "type": "Lecture"
+        },
+        {
+          "time": "10:00 - 11:00",
+          "subject": "Computer Networks",
+          "code": "CSE304",
+          "room": "LT-104",
+          "faculty": "Prof. Deepa Sen",
+          "type": "Lecture"
+        },
+        {
+          "time": "11:15 - 12:15",
+          "subject": "Data Structures & Algorithms",
+          "code": "CSE301",
+          "room": "LT-102",
+          "faculty": "Dr. Ramesh Gupta",
+          "type": "Lecture"
+        },
+        {
+          "time": "12:15 - 01:15",
+          "subject": "Design Thinking & Soft Skills",
+          "code": "HUM301",
+          "room": "Audi 3",
+          "faculty": "Prof. Meenakshi S.",
+          "type": "Seminar"
+        },
+        {
+          "time": "02:00 - 04:00",
+          "subject": "Networks & Cisco Packet Tracer Lab",
+          "code": "CSE304L",
+          "room": "Networking Lab 4",
+          "faculty": "Prof. Deepa Sen",
+          "type": "Practical"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "slots": [
+        {
+          "time": "09:00 - 10:00",
+          "subject": "Artificial Intelligence",
+          "code": "CSE305",
+          "room": "LT-201",
+          "faculty": "Prof. Vikram Joshi",
+          "type": "Lecture"
+        },
+        {
+          "time": "10:00 - 11:00",
+          "subject": "Database Management",
+          "code": "CSE303",
+          "room": "LT-102",
+          "faculty": "Prof. Amit Verma",
+          "type": "Lecture"
+        },
+        {
+          "time": "11:15 - 12:15",
+          "subject": "Elective: Cloud Computing",
+          "code": "CSE309",
+          "room": "LT-204",
+          "faculty": "Prof. N. Mehra",
+          "type": "Lecture"
+        },
+        {
+          "time": "12:15 - 01:15",
+          "subject": "Open Mentorship & Doubt Session",
+          "code": "DOUBT",
+          "room": "CSE Seminar Room",
+          "faculty": "Dr. Ramesh Gupta",
+          "type": "Mentorship"
+        },
+        {
+          "time": "02:00 - 04:00",
+          "subject": "Club Activities & Innovation Sandbox",
+          "code": "CLUBS",
+          "room": "Student Activity Center",
+          "faculty": "Club Leads",
+          "type": "Extracurricular"
+        }
+      ]
+    }
+  ],
+  "grades": {
+    "studentId": "student-1",
+    "cgpa": 8.84,
+    "totalCreditsEarned": 118,
+    "projectedSem6SGPA": 8.92,
+    "semesters": [
+      {
+        "sem": "Semester 1",
+        "sgpa": 8.6,
+        "credits": 22,
+        "status": "Completed"
+      },
+      {
+        "sem": "Semester 2",
+        "sgpa": 8.75,
+        "credits": 24,
+        "status": "Completed"
+      },
+      {
+        "sem": "Semester 3",
+        "sgpa": 8.9,
+        "credits": 23,
+        "status": "Completed"
+      },
+      {
+        "sem": "Semester 4",
+        "sgpa": 9.1,
+        "credits": 25,
+        "status": "Completed"
+      },
+      {
+        "sem": "Semester 5",
+        "sgpa": 8.85,
+        "credits": 24,
+        "status": "Completed"
+      },
+      {
+        "sem": "Semester 6 (Ongoing)",
+        "sgpa": 8.92,
+        "credits": 24,
+        "status": "Current Projected"
+      }
+    ],
+    "currentCourses": [
+      {
+        "code": "CSE301",
+        "title": "Data Structures & Algorithms",
+        "credits": 4,
+        "midTerm": 28,
+        "maxMidTerm": 30,
+        "internalQuiz": 19,
+        "maxInternal": 20,
+        "gradeProjected": "A+"
+      },
+      {
+        "code": "CSE302",
+        "title": "Operating Systems",
+        "credits": 4,
+        "midTerm": 24,
+        "maxMidTerm": 30,
+        "internalQuiz": 17,
+        "maxInternal": 20,
+        "gradeProjected": "A"
+      },
+      {
+        "code": "CSE303",
+        "title": "Database Management Systems",
+        "credits": 4,
+        "midTerm": 29,
+        "maxMidTerm": 30,
+        "internalQuiz": 20,
+        "maxInternal": 20,
+        "gradeProjected": "O (Outstanding)"
+      },
+      {
+        "code": "CSE304",
+        "title": "Computer Networks",
+        "credits": 4,
+        "midTerm": 22,
+        "maxMidTerm": 30,
+        "internalQuiz": 16,
+        "maxInternal": 20,
+        "gradeProjected": "B+"
+      },
+      {
+        "code": "CSE305",
+        "title": "Artificial Intelligence",
+        "credits": 4,
+        "midTerm": 27,
+        "maxMidTerm": 30,
+        "internalQuiz": 18,
+        "maxInternal": 20,
+        "gradeProjected": "A+"
+      },
+      {
+        "code": "CSE301L",
+        "title": "DSA Practical Lab",
+        "credits": 2,
+        "midTerm": 29,
+        "maxMidTerm": 30,
+        "internalQuiz": 19,
+        "maxInternal": 20,
+        "gradeProjected": "O"
+      },
+      {
+        "code": "CSE303L",
+        "title": "DBMS Lab",
+        "credits": 2,
+        "midTerm": 28,
+        "maxMidTerm": 30,
+        "internalQuiz": 19,
+        "maxInternal": 20,
+        "gradeProjected": "O"
+      }
+    ]
+  },
+  "fees": {
+    "studentId": "student-1",
+    "totalAnnualFee": 145000,
+    "totalPaid": 115000,
+    "pendingBalance": 30000,
+    "dueDate": "Nov 15, 2026",
+    "transactions": [
+      {
+        "receiptNo": "CX-2026-9812",
+        "title": "Semester 6 Examination & Laboratory Fee",
+        "amount": 30000,
+        "status": "Pending",
+        "dueDate": "Nov 15, 2026",
+        "breakdown": [
+          {
+            "item": "End-Semester University Exam Fee",
+            "cost": 12000
+          },
+          {
+            "item": "Advanced Cloud & Hardware Lab Maintenance",
+            "cost": 14000
+          },
+          {
+            "item": "Library & Digital Journal Subscription",
+            "cost": 4000
+          }
+        ]
+      },
+      {
+        "receiptNo": "CX-2026-7841",
+        "title": "Semester 6 Academic Tuition Fee",
+        "amount": 75000,
+        "status": "Paid",
+        "paidDate": "Aug 02, 2026",
+        "mode": "UPI / Net Banking (Ref: HDFC9938102)"
+      },
+      {
+        "receiptNo": "CX-2026-4120",
+        "title": "Hostel Accommodation & Mess Dues (Quarter 1)",
+        "amount": 40000,
+        "status": "Paid",
+        "paidDate": "Jul 25, 2026",
+        "mode": "Debit Card (Ref: SBIN7728192)"
+      }
+    ]
+  },
+  "notices": [
+    {
+      "id": "notif-1",
+      "title": "Tentative Schedule for Odd-Semester End Examinations - Nov/Dec 2026",
+      "department": "Controller of Examinations",
+      "date": "Oct 28, 2026",
+      "urgency": "High",
+      "category": "Examination",
+      "summary": "Theory examinations for B.Tech semesters 3, 5, and 7 commence from November 28, 2026. Hall tickets available for download after fee clearance from Nov 18.",
+      "pdfUrl": "#mock-download-exam-schedule"
+    },
+    {
+      "id": "notif-2",
+      "title": "Campus Placement Drive: Top Tier-1 Tech Firms Visiting Campus",
+      "department": "Training & Placement Cell",
+      "date": "Oct 27, 2026",
+      "urgency": "High",
+      "category": "Placement",
+      "summary": "Eligible 6th & 7th semester students with CGPA >= 7.5 and no active backlogs must verify their T&P portal profiles by Nov 05 for Microsoft, Amazon, and Atlassian.",
+      "pdfUrl": "#mock-download-placement-circular"
+    },
+    {
+      "id": "notif-3",
+      "title": "Diwali & Mid-Semester Recess Advisory & Hostel Security Notice",
+      "department": "Chief Warden & Dean Student Affairs",
+      "date": "Oct 24, 2026",
+      "urgency": "Medium",
+      "category": "Hostel & General",
+      "summary": "Hostel residents planning to travel home during the festive recess must fill out the outstation gate pass on the ERP portal 48 hours prior to departure.",
+      "pdfUrl": "#mock-download-hostel-circular"
+    },
+    {
+      "id": "notif-4",
+      "title": "Annual Sports Meet 'Agon 2026' - Inter-Branch Registrations Open",
+      "department": "Physical Education & Sports Committee",
+      "date": "Oct 20, 2026",
+      "urgency": "Low",
+      "category": "Sports",
+      "summary": "Trials for Cricket, Football, Basketball, Table Tennis, and Badminton will be held from Nov 02 onwards at the campus sports complex.",
+      "pdfUrl": "#mock-download-sports-schedule"
+    }
+  ]
+}

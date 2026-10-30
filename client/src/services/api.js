@@ -1,15 +1,33 @@
-// api.js - Centralized API Service for CampusX Frontend with AI Service
+// api.js - Centralized API Service for CampusX Frontend with Auth & AI Service
 
 const API_BASE = import.meta.env.VITE_API_URL || "/api";
 
+let authToken = typeof window !== "undefined" ? localStorage.getItem("campusx_token") : null;
+
+export const setAuthToken = (token) => {
+  authToken = token;
+  if (typeof window !== "undefined") {
+    if (token) {
+      localStorage.setItem("campusx_token", token);
+    } else {
+      localStorage.removeItem("campusx_token");
+    }
+  }
+};
+
+export const getAuthToken = () => authToken;
+
 async function request(endpoint, options = {}) {
   try {
+    const headers = {
+      "Content-Type": "application/json",
+      ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+      ...options.headers
+    };
+
     const res = await fetch(`${API_BASE}${endpoint}`, {
-      headers: {
-        "Content-Type": "application/json",
-        ...options.headers
-      },
-      ...options
+      ...options,
+      headers
     });
 
     if (!res.ok) {
@@ -25,6 +43,12 @@ async function request(endpoint, options = {}) {
 }
 
 export const api = {
+  // Authentication & Multi-User Profile
+  register: (userData) => request("/auth/register", { method: "POST", body: JSON.stringify(userData) }),
+  login: (credentials) => request("/auth/login", { method: "POST", body: JSON.stringify(credentials) }),
+  getMe: () => request("/auth/me"),
+  updateProfile: (profileData) => request("/auth/profile", { method: "PUT", body: JSON.stringify(profileData) }),
+
   // Personas
   getPersonas: () => request("/personas"),
   getPersona: (id) => request(`/personas/${id}`),

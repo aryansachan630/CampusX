@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 export function Dashboard({ onTabChange, attendanceData, timetableData, postsData, noticesData, eventsData }) {
-  const { currentPersona } = useAuth();
+  const { currentPersona, openProfileModal } = useAuth();
   const isStudent = currentPersona?.role === "student";
 
   // Today's classes (default Monday/Tuesday schedule)
@@ -34,19 +34,26 @@ export function Dashboard({ onTabChange, attendanceData, timetableData, postsDat
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium">
               <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-              <span>KCC Institute Portal • CSE 6th Semester</span>
+              <span>{currentPersona?.collegeName || "KCC Institute"} • {currentPersona?.rollNo ? `Roll: ${currentPersona.rollNo}` : (currentPersona?.facultyId || "KCC CSE Portal")}</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Welcome back, {currentPersona?.name}! 👋
             </h1>
             <p className="text-sm text-slate-300 max-w-xl">
-              {isStudent
+              {currentPersona?.bio || (isStudent
                 ? `You have 4 classes today in Block B. Your overall attendance is in the safe zone at 84.5%.`
-                : `Faculty workspace for CSE Department. 2 pending circulars and 1 club event awaiting approval.`}
+                : `Faculty workspace for CSE Department. 2 pending circulars and 1 club event awaiting approval.`)}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2.5">
+            <button
+              onClick={() => openProfileModal && openProfileModal()}
+              className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-750 transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Edit Profile</span>
+            </button>
             <button
               onClick={() => onTabChange("attendance")}
               className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-2 cursor-pointer"
@@ -56,7 +63,7 @@ export function Dashboard({ onTabChange, attendanceData, timetableData, postsDat
             </button>
             <button
               onClick={() => onTabChange("buzz")}
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition-all flex items-center gap-2 cursor-pointer"
+              className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition-all flex items-center gap-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-indigo-400" />
               <span>Campus Buzz</span>

@@ -16,7 +16,13 @@
   <b>CampusX</b> bridges the long-standing divide in collegiate higher education between fragmented student life communities and disconnected legacy ERP systems. Built with modern web architecture, responsive glassmorphic aesthetics, and context-aware artificial intelligence.
 </p>
 
-[Explore Features](#-core-platform-divisions) • [Architecture](#-system-architecture) • [Quickstart](#-quickstart--local-development) • [API Reference](#-rest-api-documentation) • [Deployment](#-cloud-deployment-guide)
+<p align="center">
+  <a href="https://campusx-a5ek.onrender.com" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_LIVE_PORTAL-campusx--a5ek.onrender.com-success?style=for-the-badge&logo=render&logoColor=white" alt="Live Demo" />
+  </a>
+</p>
+
+[🌐 Live Deployment](https://campusx-a5ek.onrender.com) • [Explore Features](#-core-platform-divisions) • [Architecture](#-system-architecture) • [Quickstart](#-quickstart--local-development) • [API Reference](#-rest-api-documentation) • [College Onboarding](#-institutional-onboarding--multi-user-guide)
 
 ---
 
@@ -386,6 +392,41 @@ docker run -d -p 5000:5000 --name campusx-app campusx:latest
 docker compose up -d --build
 ```
 Access the unified production platform at `http://localhost:5000`.
+
+---
+
+## 🏛️ Institutional Onboarding & Multi-User Guide
+
+CampusX is architected for institutional adoption at **KCC Institute of Technology and Management**. Any student, faculty member, or club lead can access and use the platform:
+
+### 1. Default Demo Accounts
+For instant evaluations and live showcases, the portal comes pre-seeded with 3 authenticated personas (default password for all demo accounts: `password123`):
+| Persona | Name | Role | Email / Roll No | Purpose |
+|---|---|---|---|---|
+| **Student (Default)** | Aryan Sachan | 3rd Year CSE | `2304920100148` / `aryansachan630@gmail.com` | Attendance tracking, CGPA transcript, fee payments, hackathon team formation |
+| **Faculty / Admin** | Dr. Ramesh Gupta | Professor & HOD (CSE) | `r.gupta@kccitm.edu.in` | Mark lecture attendance, publish institutional notices & circulars |
+| **Senior Mentor** | Priya Nair | Final Year CSE (Google Intern) | `priya.nair@kccitm.edu.in` | Accept 1-on-1 mentorship bookings, FAANG interview advice |
+
+### 2. How Any Student Can Register & Use CampusX
+1. Open the live portal at [https://campusx-a5ek.onrender.com](https://campusx-a5ek.onrender.com).
+2. Click **"Sign In / Register"** in the navigation bar.
+3. Switch to the **"Register New Student"** tab.
+4. Fill in:
+   * **Full Name**
+   * **College Roll Number** (e.g., `2304920100xxx`)
+   * **College Email Address**
+   * **Department** (CSE, IT, ECE, ME, Applied Sciences)
+   * **Semester** (1st to 8th)
+   * **Password**
+5. Click **"Create KCC CampusX Account"**.
+6. The user is automatically issued a secure JWT token, registered in the persistent database (`server/data/store.json`), and given immediate access to all features.
+
+### 3. Student Profile Customization
+Students can personalize their public profile anytime:
+* Click **"Edit Profile"** in the top navbar or dashboard banner.
+* Select an avatar preset or enter a custom photo URL.
+* Update their **About Me bio**, **Skills & Tech Stack tags** (e.g. `React, Python, DSA, AI`), **GitHub URL**, and **LinkedIn URL**.
+* Changes are instantly synchronized and persisted.
 
 ---
 

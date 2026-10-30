@@ -1,10 +1,23 @@
+// index.js - CampusX Express REST API Server with Persistent Database & Real Auth
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
-import { initialData } from "./data/campusData.js";
+import {
+  initDb,
+  getDb,
+  saveDb,
+  createUser,
+  updateUser,
+  findUserByEmailOrRoll,
+  findUserById,
+  verifyPassword,
+  generateToken,
+  verifyToken,
+  resetDatabase
+} from "./data/db.js";
 import { generateCampusAIResponse } from "./services/aiService.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -13,13 +26,28 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Initialize persistent database
+initDb();
+
 // Enable CORS and JSON parsing
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// In-Memory state clone
-let db = JSON.parse(JSON.stringify(initialData));
+// Authentication Middleware
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ error: "Please log in to continue" });
+  }
+  const token = authHeader.split(" ")[1];
+  const decoded = verifyToken(token);
+  if (!decoded) {
+    return res.status(401).json({ error: "Session expired. Please log in again." });
+  }
+  req.user = decoded;
+  next();
+}
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
@@ -27,28 +55,114 @@ app.get("/api/health", (req, res) => {
     status: "ok",
     appName: "CampusX API",
     time: new Date().toISOString(),
-    version: "1.0.0",
-    aiEnabled: true
+    version: "2.0.0",
+    aiEnabled: true,
+    storage: "persistent-store.json"
   });
 });
 
 // ----------------------------------------------------
-// 1. AUTH & PERSONAS
+// 1. AUTHENTICATION & MULTI-USER SYSTEM
 // ----------------------------------------------------
+app.post("/api/auth/register", (req, res) => {
+  try {
+    const { name, email, password, rollNo, department, semester, role } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: "Name, email, and password are required" });
+    }
+
+    const newUser = createUser({
+      name,
+      email,
+      password,
+      rollNo,
+      department,
+      semester,
+      role: role || "student"
+    });
+
+    const token = generateToken(newUser);
+    const { passwordHash, ...userClean } = newUser;
+
+    res.status(201).json({
+      message: "Registration successful! Welcome to CampusX.",
+      token,
+      user: userClean
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.post("/api/auth/login", (req, res) => {
+  try {
+    const { emailOrRollNo, password } = req.body;
+    if (!emailOrRollNo || !password) {
+      return res.status(400).json({ error: "Email/Roll Number and password are required" });
+    }
+
+    const user = findUserByEmailOrRoll(emailOrRollNo);
+    if (!user) {
+      return res.status(404).json({ error: "No account found with this email or roll number" });
+    }
+
+    const isValid = verifyPassword(password, user.passwordHash);
+    if (!isValid) {
+      return res.status(401).json({ error: "Incorrect password. Please try again." });
+    }
+
+    const token = generateToken(user);
+    const { passwordHash, ...userClean } = user;
+
+    res.json({
+      message: `Welcome back, ${user.name}!`,
+      token,
+      user: userClean
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Login failed" });
+  }
+});
+
+app.get("/api/auth/me", authenticateToken, (req, res) => {
+  const user = findUserById(req.user.id);
+  if (!user) return res.status(404).json({ error: "User not found" });
+  const { passwordHash, ...userClean } = user;
+  res.json(userClean);
+});
+
+app.put("/api/auth/profile", authenticateToken, (req, res) => {
+  try {
+    const updated = updateUser(req.user.id, req.body);
+    const { passwordHash, ...userClean } = updated;
+    res.json({
+      message: "Profile updated successfully!",
+      user: userClean
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Personas list (for rapid persona switching)
 app.get("/api/personas", (req, res) => {
-  res.json(db.personas);
+  const db = getDb();
+  const cleanList = db.personas.map(({ passwordHash, ...p }) => p);
+  res.json(cleanList);
 });
 
 app.get("/api/personas/:id", (req, res) => {
-  const persona = db.personas.find(p => p.id === req.params.id);
-  if (!persona) return res.status(404).json({ error: "Persona not found" });
-  res.json(persona);
+  const user = findUserById(req.params.id);
+  if (!user) return res.status(404).json({ error: "Persona not found" });
+  const { passwordHash, ...userClean } = user;
+  res.json(userClean);
 });
 
 // ----------------------------------------------------
 // 2. CAMPUS COMMUNITY & BUZZ
 // ----------------------------------------------------
 app.get("/api/community/posts", (req, res) => {
+  const db = getDb();
   const { tag, search } = req.query;
   let posts = [...db.communityPosts];
 
@@ -69,18 +183,19 @@ app.get("/api/community/posts", (req, res) => {
 });
 
 app.post("/api/community/posts", (req, res) => {
+  const db = getDb();
   const { authorId, title, content, tag, pollQuestion, pollOptions } = req.body;
   if (!title || !content) {
     return res.status(400).json({ error: "Title and content are required" });
   }
 
-  const author = db.personas.find(p => p.id === authorId) || db.personas[0];
+  const author = findUserById(authorId) || db.personas[0];
 
   const newPost = {
     id: `post-${Date.now()}`,
     authorId: author.id,
     authorName: author.name,
-    authorRole: author.role === "student" ? "3rd Year CSE" : author.role === "faculty" ? "Faculty CSE" : "Senior Mentor",
+    authorRole: author.role === "student" ? "CSE Student" : author.role === "faculty" ? "Faculty CSE" : "Senior Mentor",
     authorAvatar: author.avatar,
     title,
     content,
@@ -104,30 +219,35 @@ app.post("/api/community/posts", (req, res) => {
   }
 
   db.communityPosts.unshift(newPost);
+  saveDb();
   res.status(201).json(newPost);
 });
 
 app.post("/api/community/posts/:id/like", (req, res) => {
+  const db = getDb();
   const { userId } = req.body;
   const post = db.communityPosts.find(p => p.id === req.params.id);
   if (!post) return res.status(404).json({ error: "Post not found" });
 
-  const likedIndex = post.likedBy.indexOf(userId || "student-1");
+  const currentUserId = userId || "student-1";
+  const likedIndex = post.likedBy.indexOf(currentUserId);
   if (likedIndex > -1) {
     post.likedBy.splice(likedIndex, 1);
     post.likesCount = Math.max(0, post.likesCount - 1);
   } else {
-    post.likedBy.push(userId || "student-1");
+    post.likedBy.push(currentUserId);
     post.likesCount += 1;
   }
 
+  saveDb();
   res.json({
     likesCount: post.likesCount,
-    isLiked: post.likedBy.includes(userId || "student-1")
+    isLiked: post.likedBy.includes(currentUserId)
   });
 });
 
 app.post("/api/community/posts/:id/comments", (req, res) => {
+  const db = getDb();
   const { authorName, authorRole, text } = req.body;
   const post = db.communityPosts.find(p => p.id === req.params.id);
   if (!post) return res.status(404).json({ error: "Post not found" });
@@ -135,17 +255,19 @@ app.post("/api/community/posts/:id/comments", (req, res) => {
 
   const newComment = {
     id: `c-${Date.now()}`,
-    authorName: authorName || "Aarav Sharma",
+    authorName: authorName || "Aryan Sachan",
     authorRole: authorRole || "Student",
     text,
     time: "Just now"
   };
 
   post.comments.push(newComment);
+  saveDb();
   res.status(201).json(newComment);
 });
 
 app.post("/api/community/posts/:id/poll-vote", (req, res) => {
+  const db = getDb();
   const { optionId } = req.body;
   const post = db.communityPosts.find(p => p.id === req.params.id);
   if (!post || !post.poll) return res.status(404).json({ error: "Poll not found" });
@@ -155,6 +277,7 @@ app.post("/api/community/posts/:id/poll-vote", (req, res) => {
 
   option.votes += 1;
   post.poll.userVoted = optionId;
+  saveDb();
 
   res.json(post.poll);
 });
@@ -163,19 +286,23 @@ app.post("/api/community/posts/:id/poll-vote", (req, res) => {
 // 3. CLUBS & CAMPUS EVENTS
 // ----------------------------------------------------
 app.get("/api/clubs", (req, res) => {
+  const db = getDb();
   res.json(db.clubs);
 });
 
 app.get("/api/events", (req, res) => {
+  const db = getDb();
   res.json(db.events);
 });
 
 app.post("/api/events/:id/rsvp", (req, res) => {
+  const db = getDb();
   const evt = db.events.find(e => e.id === req.params.id);
   if (!evt) return res.status(404).json({ error: "Event not found" });
 
   evt.isUserRsvpd = !evt.isUserRsvpd;
   evt.rsvpsCount += evt.isUserRsvpd ? 1 : -1;
+  saveDb();
 
   res.json({
     id: evt.id,
@@ -185,6 +312,7 @@ app.post("/api/events/:id/rsvp", (req, res) => {
 });
 
 app.post("/api/events", (req, res) => {
+  const db = getDb();
   const { title, clubName, date, time, venue, category, prizePool, capacity, description, image } = req.body;
   if (!title || !venue) {
     return res.status(400).json({ error: "Title and venue are required" });
@@ -208,6 +336,7 @@ app.post("/api/events", (req, res) => {
   };
 
   db.events.unshift(newEvent);
+  saveDb();
   res.status(201).json(newEvent);
 });
 
@@ -215,24 +344,29 @@ app.post("/api/events", (req, res) => {
 // 4. SENIOR-JUNIOR MENTORSHIP
 // ----------------------------------------------------
 app.get("/api/mentors", (req, res) => {
+  const db = getDb();
   res.json(db.mentors);
 });
 
 app.get("/api/mentorship/bookings", (req, res) => {
+  const db = getDb();
   res.json(db.mentorBookings);
 });
 
 app.post("/api/mentorship/book", (req, res) => {
+  const db = getDb();
   const { mentorId, studentId, topic, slot } = req.body;
   const mentor = db.mentors.find(m => m.id === mentorId);
   if (!mentor) return res.status(404).json({ error: "Mentor not found" });
+
+  const student = findUserById(studentId) || db.personas[0];
 
   const newBooking = {
     id: `mb-${Date.now()}`,
     mentorId: mentor.id,
     mentorName: mentor.name,
-    studentId: studentId || "student-1",
-    studentName: "Aryan Sachan",
+    studentId: student.id,
+    studentName: student.name,
     topic: topic || "Career and Code Guidance",
     slot: slot || mentor.availableSlots[0],
     status: "Confirmed",
@@ -241,6 +375,7 @@ app.post("/api/mentorship/book", (req, res) => {
 
   db.mentorBookings.unshift(newBooking);
   mentor.reviewsCount += 1;
+  saveDb();
 
   res.status(201).json(newBooking);
 });
@@ -249,10 +384,12 @@ app.post("/api/mentorship/book", (req, res) => {
 // 5. ACADEMIC ERP - ATTENDANCE
 // ----------------------------------------------------
 app.get("/api/academic/attendance", (req, res) => {
+  const db = getDb();
   res.json(db.attendance);
 });
 
 app.post("/api/academic/attendance/mark", (req, res) => {
+  const db = getDb();
   const { code, attended } = req.body;
   const subject = db.attendance.subjects.find(s => s.code === code);
   if (!subject) return res.status(404).json({ error: "Subject not found" });
@@ -281,6 +418,7 @@ app.post("/api/academic/attendance/mark", (req, res) => {
     slot: "Live Updated"
   });
 
+  saveDb();
   res.json(db.attendance);
 });
 
@@ -288,6 +426,7 @@ app.post("/api/academic/attendance/mark", (req, res) => {
 // 6. ACADEMIC ERP - TIMETABLE
 // ----------------------------------------------------
 app.get("/api/academic/timetable", (req, res) => {
+  const db = getDb();
   res.json(db.timetable);
 });
 
@@ -295,6 +434,7 @@ app.get("/api/academic/timetable", (req, res) => {
 // 7. ACADEMIC ERP - GRADES & TRANSCRIPT
 // ----------------------------------------------------
 app.get("/api/academic/grades", (req, res) => {
+  const db = getDb();
   res.json(db.grades);
 });
 
@@ -302,10 +442,12 @@ app.get("/api/academic/grades", (req, res) => {
 // 8. ACADEMIC ERP - FEES & PAYMENT SIMULATION
 // ----------------------------------------------------
 app.get("/api/academic/fees", (req, res) => {
+  const db = getDb();
   res.json(db.fees);
 });
 
 app.post("/api/academic/fees/pay", (req, res) => {
+  const db = getDb();
   const { receiptNo, paymentMethod } = req.body;
   const transaction = db.fees.transactions.find(t => t.receiptNo === receiptNo);
   if (!transaction) return res.status(404).json({ error: "Transaction invoice not found" });
@@ -326,6 +468,7 @@ app.post("/api/academic/fees/pay", (req, res) => {
     student.pendingFees = db.fees.pendingBalance;
   }
 
+  saveDb();
   res.json({
     message: "Fee payment successful!",
     receipt: transaction,
@@ -337,10 +480,12 @@ app.post("/api/academic/fees/pay", (req, res) => {
 // 9. CAMPUS NOTICES & CIRCULARS
 // ----------------------------------------------------
 app.get("/api/notices", (req, res) => {
+  const db = getDb();
   res.json(db.notices);
 });
 
 app.post("/api/notices", (req, res) => {
+  const db = getDb();
   const { title, department, urgency, category, summary } = req.body;
   if (!title || !summary) {
     return res.status(400).json({ error: "Title and summary are required" });
@@ -358,6 +503,7 @@ app.post("/api/notices", (req, res) => {
   };
 
   db.notices.unshift(newNotice);
+  saveDb();
   res.status(201).json(newNotice);
 });
 
@@ -365,6 +511,7 @@ app.post("/api/notices", (req, res) => {
 // 10. CAMPUSGENIE AI ENDPOINTS
 // ----------------------------------------------------
 app.post("/api/ai/chat", async (req, res) => {
+  const db = getDb();
   try {
     const { message, context, apiKey, task } = req.body;
     if (!message) {
@@ -408,6 +555,7 @@ app.post("/api/ai/summarize-notice", async (req, res) => {
 });
 
 app.post("/api/ai/attendance-plan", async (req, res) => {
+  const db = getDb();
   try {
     const { apiKey } = req.body;
     const aiResult = await generateCampusAIResponse({
@@ -453,10 +601,10 @@ app.post("/api/ai/polish-post", async (req, res) => {
 });
 
 // ----------------------------------------------------
-// RESET STATE HELPER (Useful for testing & demo)
+// RESET STATE HELPER
 // ----------------------------------------------------
 app.post("/api/reset", (req, res) => {
-  db = JSON.parse(JSON.stringify(initialData));
+  resetDatabase();
   res.json({ message: "CampusX database restored to initial state." });
 });
 
@@ -478,5 +626,6 @@ app.listen(PORT, () => {
   console.log(`\n======================================================`);
   console.log(`🎓 CampusX Server running on: http://localhost:${PORT}`);
   console.log(`✨ CampusGenie AI Copilot enabled & ready!`);
+  console.log(`💾 Multi-User Database: server/data/store.json`);
   console.log(`======================================================\n`);
 });

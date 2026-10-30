@@ -13,6 +13,8 @@ import { FeePayments } from "./pages/FeePayments";
 import { NoticesBoard } from "./pages/NoticesBoard";
 import { FacultyAdminPortal } from "./pages/FacultyAdminPortal";
 import { CampusAICopilot } from "./components/CampusAICopilot";
+import { AuthModal } from "./components/AuthModal";
+import { ProfileEditModal } from "./components/ProfileEditModal";
 import { api } from "./services/api";
 import { Loader2, Sparkles } from "lucide-react";
 
@@ -253,6 +255,12 @@ function MainApp() {
         }}
         initialPrompt={aiInitialPrompt}
       />
+
+      {/* Institutional Authentication Modal */}
+      <AuthModal />
+
+      {/* Student & Faculty Profile Edit Modal */}
+      <ProfileEditModal />
     </div>
   );
 }
