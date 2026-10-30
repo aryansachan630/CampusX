@@ -1,0 +1,18 @@
+{
+  "name": "campusx-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend API for CampusX - Campus Operating System & Student Network",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.32.0",
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.9",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  }
+}
